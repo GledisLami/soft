@@ -4,20 +4,20 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "studentEnrollment")
+@Table(name = "feedback")
 @Data
-public class StudentEnrollment {
+public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "rating")
+    private Integer rating;
+
+    @Column(name = "description")
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "courseId", referencedColumnName = "id")
     private Course course;
-
-    @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id")
-    private User user;
-
 }
