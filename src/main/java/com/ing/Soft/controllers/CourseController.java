@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 public class CourseController {
 
-
         @Autowired
         CourseService courseService;
 
         @PostMapping
         public void saveCourse(@RequestBody Course course){
-
                 courseService.saveCourse(course);
         }
 
