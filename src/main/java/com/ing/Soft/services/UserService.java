@@ -17,8 +17,8 @@ public class UserService {
     UserRepository userRepository;
 
 
-    public void saveUser(String name){
-
+    public void saveUser(User user){
+        userRepository.save(user);
     }
 
 
