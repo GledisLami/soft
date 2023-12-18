@@ -23,6 +23,10 @@ public class Feedback {
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     //sql date
     @Column(name = "date")
     private Date date;

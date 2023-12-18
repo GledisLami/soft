@@ -9,12 +9,12 @@ import java.sql.Date;
 import java.util.List;
 
 @Repository
-public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
+public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
 
     @Query(value = "SELECT * FROM feedback WHERE date < :date", nativeQuery = true)
     List<Feedback> findByDateBefore(Date date);
 
     @Query(value = "SELECT * FROM feedback WHERE course_id = :courseId ORDER BY date DESC", nativeQuery = true)
-    List<Feedback> findByCourseId(Long courseId);
+    List<Feedback> findByCourseId(Integer courseId);
 
 }

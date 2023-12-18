@@ -2,7 +2,6 @@ package com.ing.Soft.repositories;
 
 import com.ing.Soft.dtos.CourseDto;
 import com.ing.Soft.entities.Course;
-import com.ing.Soft.interfaces.CourseInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -33,5 +32,4 @@ public interface CourseRepository extends JpaRepository <Course, Integer> {
             "WHERE a.id = :id", nativeQuery = true)
     CourseInterface findCourseDto(Integer id); //find by course id
 
-    // TODO: ALEKSANDER top 8 courses method + all methods should be on the 3 tiers for course + coursedto
 }
