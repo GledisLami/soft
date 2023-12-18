@@ -6,9 +6,8 @@ import com.ing.Soft.repositories.CourseRepository;
 import com.ing.Soft.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
-
-//a method that saves users
 
 @Service
 public class UserService {
@@ -24,8 +23,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-
-
-
+    public Optional<User> findById(Long id){
+        return userRepository.findById(id);
+    }
 
 }

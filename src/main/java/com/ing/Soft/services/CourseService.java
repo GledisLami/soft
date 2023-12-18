@@ -25,6 +25,10 @@ public class CourseService {
     public List<Course> getCourseList(){
         return courseRepository.findAll();
     }
+  
+    public Optional<Course> findById(Long id){
+        return courseRepository.findById(id);
+    }
 
     public void saveCourse(Course course){
         //course.setStudentsNo(0);  -> default on database
