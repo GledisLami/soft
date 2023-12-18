@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface CourseRepository extends JpaRepository <Course, Integer> {
 
-    Optional<Course> findById(Integer id);
+    Optional<Course> findById(Long id);
     Optional<Course> findByName(String name);
 
     @Query(value = "SELECT a.id, a.name, u.name as teacher, a.studentsNo, c.average " +
