@@ -1,5 +1,7 @@
 package com.ing.Soft.services;
 
+import java.util.List;
+import java.util.Optional;
 import com.ing.Soft.dtos.CourseDto;
 import com.ing.Soft.entities.Course;
 import com.ing.Soft.repositories.CourseRepository;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Service
 public class CourseService {
-
+    
     final CourseRepository courseRepository;
 
     final FeedbackService feedbackService;
@@ -20,6 +22,9 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
+    public List<Course> getCourseList(){
+        return courseRepository.findAll();
+    }
 
     public void saveCourse(Course course){
         //course.setStudentsNo(0);  -> default on database

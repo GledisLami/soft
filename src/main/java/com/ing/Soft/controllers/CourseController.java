@@ -1,4 +1,3 @@
-package com.ing.Soft.controllers;
 import com.ing.Soft.entities.Course;
 import com.ing.Soft.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +15,9 @@ public class CourseController {
         public void saveCourse(@RequestBody Course course){
                 courseService.saveCourse(course);
         }
-
+  
+        @GetMapping
+        public List<Course> getCourseList(){
+           return courseService.getCourseList();
+        }
 }
