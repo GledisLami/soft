@@ -2,6 +2,7 @@ package com.ing.Soft.repositories;
 
 import com.ing.Soft.dtos.CourseDto;
 import com.ing.Soft.entities.Course;
+import com.ing.Soft.interfaces.CourseInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
