@@ -1,9 +1,11 @@
 package com.ing.Soft.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import com.ing.Soft.dtos.CourseDto;
 import com.ing.Soft.entities.Course;
+import com.ing.Soft.interfaces.CourseInterface;
 import com.ing.Soft.repositories.CourseRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class CourseService {
         return courseRepository.findAll();
     }
   
-    public Optional<Course> findById(Long id){
+    public Optional<Course> findById(Integer id){
         return courseRepository.findById(id);
     }
 
@@ -37,7 +39,18 @@ public class CourseService {
 
 
     public List<CourseDto> getAllCourseDtos(){
-        return courseRepository.findCourseDtos();
+        List<CourseInterface> courseInterfaceList = courseRepository.findCourseDtos();
+        List<CourseDto> courseDtoList = new ArrayList<>();
+        for (CourseInterface courseInterface : courseInterfaceList) {
+            CourseDto courseDto = new CourseDto();
+            courseDto.setId(courseInterface.getId());
+            courseDto.setName(courseInterface.getName());
+            courseDto.setTeacher(courseInterface.getTeacher());
+            courseDto.setStudentsNo(courseInterface.getStudentsNo());
+            courseDto.setAverage(courseInterface.getAverage());
+            courseDtoList.add(courseDto);
+        }
+        return courseDtoList;
     }
 
 }

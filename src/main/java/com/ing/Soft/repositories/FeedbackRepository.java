@@ -14,7 +14,7 @@ public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
     @Query(value = "SELECT * FROM feedback WHERE date < :date", nativeQuery = true)
     List<Feedback> findByDateBefore(Date date);
 
-    @Query(value = "SELECT * FROM feedback WHERE courseId = :courseId ORDER BY date DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM feedback WHERE course_id = :courseId ORDER BY date DESC", nativeQuery = true)
     List<Feedback> findByCourseId(Long courseId);
 
 }

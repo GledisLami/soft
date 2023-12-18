@@ -1,7 +1,6 @@
 package com.ing.Soft.controllers;
 
 import com.ing.Soft.entities.User;
-import com.ing.Soft.services.CourseService;
 import com.ing.Soft.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +24,7 @@ public class UserController {
     }
     
     @GetMapping("/id")
-    public Optional<User> findById(@RequestParam Long id){
+    public Optional<User> findById(@RequestParam Integer id){
         return userService.findById(id);
     }
 }

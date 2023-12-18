@@ -11,7 +11,7 @@ import java.sql.Date;
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "rating")
     private Integer rating;
@@ -20,7 +20,7 @@ public class Feedback {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "courseId", referencedColumnName = "id")
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
 
     //sql date

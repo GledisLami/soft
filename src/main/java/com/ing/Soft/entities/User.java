@@ -12,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "username")
     private String username;
@@ -26,7 +26,7 @@ public class User {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "personalNo")
+    @Column(name = "personal_no")
     private String personalNo;
 
     @Column(name = "birthday")
@@ -36,6 +36,6 @@ public class User {
     private Integer enabled;
 
     @ManyToOne
-    @JoinColumn(name = "roleId", referencedColumnName = "id")
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 }
