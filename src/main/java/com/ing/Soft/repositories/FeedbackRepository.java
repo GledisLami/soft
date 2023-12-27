@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Date;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
@@ -16,5 +17,17 @@ public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
 
     @Query(value = "SELECT * FROM feedback WHERE course_id = :courseId ORDER BY date DESC", nativeQuery = true)
     List<Feedback> findByCourseId(Integer courseId);
+
+    Optional<Feedback> findByUser_Id(Integer userId);
+    /*
+    feedback controller in all feedbackService methods
+     */
+
+    @Query(value = "select * from feedback where course_id = :course_id and user_id = :user_id")
+    Optional<Feedback> findByUserAndCourseId(Integer course_id, Integer user_id);
+
+    // Using a custom query with @Query
+    @Query("SELECT f FROM Feedback f WHERE f.user.id = :userId")
+    Optional<Feedback> findFeedbackByUserId(Integer userId);
 
 }
