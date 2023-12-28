@@ -1,5 +1,6 @@
 package com.ing.Soft.controllers;
 
+import com.ing.Soft.dtos.CourseDto;
 import com.ing.Soft.entities.StudentEnrollment;
 import com.ing.Soft.services.StudentEnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +13,21 @@ import java.util.List;
 public class StudentEnrollmentController {
 
     @Autowired
-     StudentEnrollmentService enrollmentService;
+     StudentEnrollmentService studentEnrollmentService;
 
+    @PostMapping
+    public void enrollStudent(@RequestParam Integer course_id, @RequestParam Integer user_id) {
+        studentEnrollmentService.enrollStudent(course_id, user_id);
 
-    @PostMapping("/enroll")
-    public void enrollStudent(@RequestBody StudentEnrollment enrollment) {
-        enrollmentService.enrollStudent(enrollment);
     }
 
-    @PostMapping("/unenroll")
-    public void unenrollStudents(@RequestParam StudentEnrollment enrollmentId) {
-        enrollmentService.unenrollStudent(enrollmentId);
+    @DeleteMapping("/unenroll")
+    public void unenrollStudents(@RequestParam Integer course_id, @RequestParam Integer user_id) {
     }
 
     @GetMapping("/getEnrolledCourses/studentId")
-    public List<StudentEnrollment> getEnrolledCoursesForStudent(@RequestParam Integer studentId) {
-        return enrollmentService.getEnrolledCoursesForStudents(studentId);
+    public List<CourseDto> getEnrolledCoursesForStudent(@RequestParam Integer studentId) {
+        return studentEnrollmentService.getEnrolledCoursesForStudent(studentId);
 
     }
 }
