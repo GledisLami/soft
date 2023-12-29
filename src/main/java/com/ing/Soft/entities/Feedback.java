@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
+import java.util.Optional;
 
 @Entity
 @Table(name = "feedback")
@@ -26,8 +27,9 @@ public class Feedback {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-
     //sql date
     @Column(name = "date")
     private Date date;
+
+
 }
