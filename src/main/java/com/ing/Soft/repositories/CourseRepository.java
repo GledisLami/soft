@@ -1,7 +1,9 @@
 package com.ing.Soft.repositories;
 
 import com.ing.Soft.dtos.CourseDto;
+import com.ing.Soft.dtos.CourseDtoDetailed;
 import com.ing.Soft.entities.Course;
+import com.ing.Soft.interfaces.CourseDetailedInterface;
 import com.ing.Soft.interfaces.CourseInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -33,4 +35,20 @@ public interface CourseRepository extends JpaRepository <Course, Integer> {
             "WHERE a.id = :id", nativeQuery = true)
     CourseInterface findCourseDto(Integer id); //find by course id
 
+
+    @Query(value = "SELECT a.id AS id, a.name AS name, a.description AS description, a.time AS time, a.students_no AS studentsNo, fa.average AS average, u.name AS teacher " +
+            "FROM course a " +
+            "JOIN feedback_average fa ON fa.course_id = a.id " +
+            "JOIN teacher_enrollment te ON te.course_id = a.id " +
+            "JOIN user u ON u.id = te.user_id " +
+            "ORDER BY fa.average DESC", nativeQuery = true)
+    List<CourseDetailedInterface> findTop8ByOrderByAverageDesc();
+
+
+    @Query(value = "SELECT a.id AS id, a.name AS name, a.description AS description, a.time AS time, a.students_no AS studentsNo, fa.average AS average, u.name AS teacher " +
+            "FROM course a " +
+            "JOIN feedback_average fa ON fa.course_id = a.id " +
+            "JOIN teacher_enrollment te ON te.course_id = a.id " +
+            "JOIN user u ON u.id = te.user_id ", nativeQuery = true)
+    List<CourseDetailedInterface> findAllCourseDtoDetailed();
 }

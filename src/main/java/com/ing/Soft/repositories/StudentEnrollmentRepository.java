@@ -7,8 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
+import java.util.Optional;
+
 @Repository
 public interface StudentEnrollmentRepository extends JpaRepository<StudentEnrollment, Integer> {
+
 
     @Query(value = "SELECT a.id as id, a.name as name, u.name as teacher, a.students_no as studentsNo, c.average as average " +
             "FROM course a " +
@@ -20,6 +23,10 @@ public interface StudentEnrollmentRepository extends JpaRepository<StudentEnroll
 
     @Query(value = "SELECT * FROM student_enrollment WHERE user_id = :user_id AND course_id = :course_id", nativeQuery = true)
     StudentEnrollment findByStudentAndCourseId(Integer user_id, Integer course_id);
+
+
+    @Query(value = "select * from student_enrollment where user_id = :user_id AND course_id = :course_id", nativeQuery = true)
+    Optional<StudentEnrollment> findByUserAndCouseId(Integer user_id, Integer course_id);
 
 
 }
