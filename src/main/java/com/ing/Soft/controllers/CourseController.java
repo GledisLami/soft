@@ -4,7 +4,6 @@ package com.ing.Soft.controllers;
 import com.ing.Soft.dtos.CourseDto;
 import com.ing.Soft.dtos.CourseDtoDetailed;
 import com.ing.Soft.entities.Course;
-import com.ing.Soft.interfaces.CourseInterface;
 import com.ing.Soft.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +40,7 @@ public class CourseController {
     }
 
     @GetMapping("/top8")
-    public List<CourseDto> getTop8Courses(){
+    public List<CourseDto> getTop8CourseDtos(){
         return courseService.findTop8ByOrderByAverageDesc();
     }
 
@@ -55,9 +54,9 @@ public class CourseController {
         return courseService.getCourseDtoDetailed(id);
     }
 
-    @GetMapping("/getEnrolledCourses/studentId")
-    public List<CourseDto> getEnrolledCoursesForStudent(@RequestParam Integer studentId) {
-        return courseService.getEnrolledCoursesForStudent(studentId);
+    @GetMapping("/dto/userId")
+    public List<CourseDto> getEnrolledCoursesForStudent(@RequestParam Integer userId) {
+        return courseService.getEnrolledCoursesForStudent(userId);
     }
 
 }

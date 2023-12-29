@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/enrollment")
+@RequestMapping("/api/v1/enrollment")
 public class StudentEnrollmentController {
 
     @Autowired

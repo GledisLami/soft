@@ -1,0 +1,43 @@
+### Course endpoint
+GET localhost:8080/api/v1/course
+Accept: application/json
+
+###
+GET localhost:8080/api/v1/course/id?id=1
+Accept: application/json
+
+###
+POST localhost:8080/api/v1/course
+Content-Type: application/json
+
+{
+  "id": 50,
+  "name": "Intro to Engineering",
+  "description": "This is a course about engineering",
+  "time": "2021-09-01T00:00:00.000Z",
+  "studentsNo": 0
+}
+
+###
+GET localhost:8080/api/v1/course/dto
+Accept: application/json
+
+###
+GET localhost:8080/api/v1/course/dto/id?id=1
+Accept: application/json
+
+###
+GET localhost:8080/api/v1/course/dto/userId?userId=3
+Accept: application/json
+
+###
+GET localhost:8080/api/v1/course/dtoDetailed/id?id=1
+Accept: application/json
+
+###
+GET localhost:8080/api/v1/course/top8
+Accept: application/json
+
+### Feedback Controller
+GET localhost:8080/api/v1/feedback
+Accept: application/json

@@ -20,11 +20,11 @@ public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
 
     Optional<Feedback> findByUser_Id(Integer userId);
 
-    @Query(value = "select * from feedback where course_id = :course_id and user_id = :user_id")
+    @Query(value = "SELECT * from feedback where course_id = :course_id and user_id = :user_id", nativeQuery = true)
     Optional<Feedback> findByUserAndCourseId(Integer course_id, Integer user_id);
 
     // Using a custom query with @Query
-    @Query("SELECT f FROM Feedback f WHERE f.user.id = :userId")
+    @Query(value = "SELECT * FROM feedback WHERE user_id = :userId", nativeQuery = true)
     Optional<Feedback> findFeedbackByUserId(Integer userId);
 
 }

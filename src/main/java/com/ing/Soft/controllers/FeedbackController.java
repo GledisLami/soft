@@ -16,12 +16,12 @@ public class FeedbackController {
     @Autowired
     FeedbackService feedbackService;
     @GetMapping
-    public List<Feedback> findAll(){
+    public List<FeedbackDto> findAll(){
         return feedbackService.findAll();
     }
 
-    @GetMapping
-    public Optional<Feedback> findById(@RequestParam Integer id){
+    @GetMapping("/id")
+    public Optional<FeedbackDto> findById(@RequestParam Integer id){
         return feedbackService.findById(id);
     }
     @PostMapping
@@ -32,9 +32,8 @@ public class FeedbackController {
     public void deleteFeedback(@RequestParam Integer id){
         feedbackService.deleteFeedback(id);
     }
-    @GetMapping
-    public List<Feedback> findByCourseId(@RequestParam Integer courseId) {
+    @GetMapping("/course")
+    public List<FeedbackDto> findByCourseId(@RequestParam Integer courseId) {
         return feedbackService.findByCourseId(courseId);
-
     }
 }
