@@ -19,9 +19,6 @@ public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
     List<Feedback> findByCourseId(Integer courseId);
 
     Optional<Feedback> findByUser_Id(Integer userId);
-    /*
-    feedback controller in all feedbackService methods
-     */
 
     @Query(value = "select * from feedback where course_id = :course_id and user_id = :user_id")
     Optional<Feedback> findByUserAndCourseId(Integer course_id, Integer user_id);

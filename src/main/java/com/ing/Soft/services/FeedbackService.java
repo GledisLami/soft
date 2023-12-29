@@ -44,12 +44,7 @@ public class FeedbackService {
             //dmth qe ky student nuk eshte ne ate kurs
             return "Nuk mund te lesh pershkrim!!!";
         }
-        Feedback feedback = new Feedback();
-        feedback.setCourse(feedbackDto.getCourse());
-        feedback.setUser(feedbackDto.getUser());
-        feedback.setRating(feedbackDto.getRating());
-        feedback.setDescription(feedbackDto.getDescription());
-        feedback.setDate(feedback.getDate());
+        Feedback feedback = new Feedback(feedbackDto);
         feedbackRepository.save(feedback);
         return "U ruajt me sukses";
     }

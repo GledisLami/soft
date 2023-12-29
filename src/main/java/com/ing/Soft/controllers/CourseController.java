@@ -41,7 +41,7 @@ public class CourseController {
     }
 
     @GetMapping("/top8")
-    public List<CourseDtoDetailed> getTop8Courses(){
+    public List<CourseDto> getTop8Courses(){
         return courseService.findTop8ByOrderByAverageDesc();
     }
 
@@ -50,12 +50,14 @@ public class CourseController {
         return courseService.getCourseDto(id);
     }
 
-    @GetMapping("/dtoDetailed")
-    public List<CourseDtoDetailed> getAllCourseDtoDetailed() {
-        return courseService.getAllCourseDtoDetailed();
+    @GetMapping("/dtoDetailed/id")
+    public CourseDtoDetailed getAllCourseDtoDetailed(@RequestParam Integer id) {
+        return courseService.getCourseDtoDetailed(id);
     }
 
-
-
+    @GetMapping("/getEnrolledCourses/studentId")
+    public List<CourseDto> getEnrolledCoursesForStudent(@RequestParam Integer studentId) {
+        return courseService.getEnrolledCoursesForStudent(studentId);
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.ing.Soft.entities;
 
+import com.ing.Soft.dtos.FeedbackDto;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -31,5 +32,14 @@ public class Feedback {
     @Column(name = "date")
     private Date date;
 
+    public Feedback(FeedbackDto feedbackDto) {
+        this.rating = feedbackDto.getRating();
+        this.description = feedbackDto.getDescription();
+        this.course = feedbackDto.getCourse();
+        this.user = feedbackDto.getUser();
+        this.date = feedbackDto.getDate();
+    }
 
+    public Feedback() {
+    }
 }

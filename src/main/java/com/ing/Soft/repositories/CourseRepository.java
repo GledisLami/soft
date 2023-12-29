@@ -41,14 +41,25 @@ public interface CourseRepository extends JpaRepository <Course, Integer> {
             "JOIN feedback_average fa ON fa.course_id = a.id " +
             "JOIN teacher_enrollment te ON te.course_id = a.id " +
             "JOIN user u ON u.id = te.user_id " +
-            "ORDER BY fa.average DESC", nativeQuery = true)
-    List<CourseDetailedInterface> findTop8ByOrderByAverageDesc();
+            "ORDER BY fa.average DESC LIMIT 8", nativeQuery = true)
+    List<CourseInterface> findTop8ByOrderByAverageDesc();
+
+    @Query(value = "SELECT a.id as id, a.name as name, u.name as teacher, a.students_no as studentsNo, c.average as average " +
+            "FROM course a " +
+            "JOIN teacher_enrollment te ON a.id = te.course_id " +
+            "JOIN user u ON u.id = te.user_id " +
+            "JOIN feedback_average c ON a.id = c.course_id"+
+            "JOIN student enrollment se ON se.user_id =:user_id AND se.course_id = a.id", nativeQuery = true)
+    List<CourseInterface> findCourseDtosByUserId(Integer user_id);
 
 
     @Query(value = "SELECT a.id AS id, a.name AS name, a.description AS description, a.time AS time, a.students_no AS studentsNo, fa.average AS average, u.name AS teacher " +
             "FROM course a " +
             "JOIN feedback_average fa ON fa.course_id = a.id " +
             "JOIN teacher_enrollment te ON te.course_id = a.id " +
-            "JOIN user u ON u.id = te.user_id ", nativeQuery = true)
-    List<CourseDetailedInterface> findAllCourseDtoDetailed();
+            "JOIN user u ON u.id = te.user_id " +
+            "WHERE a.id = :id", nativeQuery = true)
+    CourseDetailedInterface findCourseDtoDetailed(Integer id);
+
+
 }

@@ -20,4 +20,11 @@ public class StudentEnrollment {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    public StudentEnrollment(Course course, User user) {
+        this.course = course;
+        this.user = user;
+    }
+
+    public StudentEnrollment() {
+    }
 }
