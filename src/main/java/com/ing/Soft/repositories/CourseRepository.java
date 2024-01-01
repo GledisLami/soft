@@ -51,7 +51,7 @@ public interface CourseRepository extends JpaRepository <Course, Integer> {
     List<CourseInterface> findCourseDtosByUserId(Integer user_id);
 
 
-    @Query(value = "SELECT a.id AS id, a.name AS name, a.description AS description, a.time AS time, a.students_no AS studentsNo, fa.average AS average, u.name AS teacher " +
+    @Query(value = "SELECT a.id AS id, a.name AS name, a.description AS description, a.time AS time, a.students_no AS studentsNo, a.location AS location, fa.average AS average, u.name AS teacher " +
             "FROM course a " +
             "JOIN feedback_average fa ON fa.course_id = a.id " +
             "JOIN teacher_enrollment te ON te.course_id = a.id " +
@@ -59,5 +59,11 @@ public interface CourseRepository extends JpaRepository <Course, Integer> {
             "WHERE a.id = :id", nativeQuery = true)
     CourseDetailedInterface findCourseDtoDetailed(Integer id);
 
+    @Query(value = "SELECT a.id AS id, a.name AS name, a.description AS description, a.time AS time, a.students_no AS studentsNo, a.location AS location, fa.average AS average, u.name AS teacher " +
+            "FROM course a " +
+            "JOIN feedback_average fa ON fa.course_id = a.id " +
+            "JOIN teacher_enrollment te ON te.course_id = a.id " +
+            "JOIN user u ON u.id = te.user_id", nativeQuery = true)
+    List<CourseDetailedInterface> findAllCourseDtoDetailed();
 
 }

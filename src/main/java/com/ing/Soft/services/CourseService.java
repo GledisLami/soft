@@ -1,11 +1,13 @@
 package com.ing.Soft.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.ing.Soft.dtos.CourseDto;
 import com.ing.Soft.dtos.CourseDtoDetailed;
 import com.ing.Soft.entities.Course;
+import com.ing.Soft.interfaces.CourseDetailedInterface;
 import com.ing.Soft.repositories.CourseRepository;
 import com.ing.Soft.util.CourseDtoMapper;
 import org.springframework.stereotype.Service;
@@ -55,6 +57,16 @@ public class CourseService {
 
     public CourseDtoDetailed getCourseDtoDetailed(Integer id) {
         return new CourseDtoDetailed(courseRepository.findCourseDtoDetailed(id));
+    }
+
+    public List<CourseDtoDetailed> getAllCourseDtoDetailed(){
+        List<CourseDtoDetailed> courses = new ArrayList<>();
+        List<CourseDetailedInterface> fetched = courseRepository.findAllCourseDtoDetailed();
+
+        for (CourseDetailedInterface c : fetched){
+            courses.add(new CourseDtoDetailed(c));
+        }
+        return courses;
     }
 
 }

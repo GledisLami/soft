@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="style.css">
     <script src="jquery.js"></script>  <!--per momentin nuk e kemi-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,28 +29,29 @@
         <ul id="navbar">
             <li><a href="kurset.html">Te gjitha kurset</a></li>
             <li><a href="8kurset.html">8 me te mirat</a></li>
-            <li><a href="kursetPersonale.html" class="active">Kurset e mia</a> </li>
-            <li><a href="kalendar.html">Kalendari</a> </li>
+            <li><a href="kursetPersonale.html">Kurset e mia</a> </li>
+            <li><a href="kalendar.html" class="active">Kalendari</a> </li>
         </ul>
     </div>
 </section>
 
 <section id="cart" class="section-p1">
-    <table width="100%">
+    <table id="courseTable">
         <thead>
         <tr>
-            <td>ID kursi</td>
-            <td>Emri</td>
-            <td>Mesuesi</td>
-            <td>Numri i studenteve</td>
-            <td>Vleresimi</td>
+            <th></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
         </tr>
         </thead>
-        <tbody class="kurset">
+        <tbody>
         </tbody>
     </table>
 </section>
-<script src="kursetPersonale.js"></script>
+<script src="kalendar.js"></script>
 </body>
 
 

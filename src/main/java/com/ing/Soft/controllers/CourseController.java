@@ -49,6 +49,11 @@ public class CourseController {
         return courseService.getCourseDto(id);
     }
 
+    @GetMapping("/dtoDetailed")
+    public List<CourseDtoDetailed> getAllCourseDtoDetailed(){
+        return courseService.getAllCourseDtoDetailed();
+    }
+
     @GetMapping("/dtoDetailed/id")
     public CourseDtoDetailed getCourseDtoDetailed(@RequestParam Integer id) {
         return courseService.getCourseDtoDetailed(id);

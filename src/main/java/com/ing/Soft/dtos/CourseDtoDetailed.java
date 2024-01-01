@@ -9,6 +9,7 @@ import lombok.*;
 public class CourseDtoDetailed extends CourseDto {
     private String description;
     private String time;
+    private String location;
 
     @Override
     public Integer getId() {
@@ -21,6 +22,7 @@ public class CourseDtoDetailed extends CourseDto {
                 courseDetailedInterface.getAverage()));
         this.description = courseDetailedInterface.getDescription();
         this.time = courseDetailedInterface.getTime();
+        this.location = courseDetailedInterface.getLocation();
     }
 
     public CourseDtoDetailed() {

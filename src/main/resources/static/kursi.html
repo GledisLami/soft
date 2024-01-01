@@ -16,13 +16,25 @@
 <section id="header">
     <div>
         <ul id="navbar">
-            <li><a href="kurset.html" class="active">Te gjitha kurset</a></li>
+            <li><a href="kurset.html">Te gjitha kurset</a></li>
             <li><a href="8kurset.html">8 me te mirat</a></li>
             <li><a href="kursetPersonale.html">Kurset e mia</a> </li>
+            <li><a href="kalendar.html">Kalendari</a> </li>
         </ul>
     </div>
 </section>
-<section id="cart" class="section-p1">
+<section id="kursi" class="section-p1">
+    <div class="kursi">
+        <h2 id="emri"></h2>
+        <p id="mesuesi">Profesori: </p>
+        <p id="pershkrimi">Pershkrimi: </p>
+        <p id="koha">Koha: </p>
+        <p id="numri_studenteve">Studente: </p>
+        <p id="vleresimi">Vleresimi: </p>
+        <p id="vendndodhja">Vendndodhja: </p>
+    </div>
+</section>
+<section id="cart" class="section-p1 details">
     <h2>Feedbacks</h2>
     <table width="100%">
         <thead>
@@ -35,6 +47,18 @@
         <tbody class="vleresimet">
         </tbody>
     </table>
+</section>
+<section id="cart-add" class="section-p1">
+    <div class="details">
+        <div style="text-align: center;">
+            <form name="feedback" action="">
+                <h3>Shtoni nje vleresim per kete kurs</h3>
+                <span id="ratingError"></span><input type="text"  name="rating" placeholder="Vleresimi 1-5">
+                <span id="projectError"></span><textarea type="text" cols="30" rows="10" name="description" placeholder="Pershkrimi"></textarea>
+            </form>
+            <button id="shto" class="normal">Shto</button>
+        </div>
+    </div>
 </section>
 <script src="kursi.js"></script>
 

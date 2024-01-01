@@ -25,16 +25,20 @@ public class Course {
     @Column(name = "students_no")
     private Integer studentsNo;
 
+    @Column(name = "location")
+    private String location;
+
     public Course(Integer id) {
         this.id = id;
     }
 
-    public Course(Integer id, String name, String description, String time, Integer studentsNo) {
+    public Course(Integer id, String name, String description, String time, Integer studentsNo, String location) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.time = time;
         this.studentsNo = studentsNo;
+        this.location = location;
     }
 
     public Course() {

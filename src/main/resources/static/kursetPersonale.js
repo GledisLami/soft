@@ -1,7 +1,4 @@
 let globalUserId = null;
-getAndUpdateUserId();
-console.log('Running kursi');
-
 displayCart();
 
 function getAndUpdateUserId() {
@@ -31,7 +28,7 @@ function displayCart(){
     getAndUpdateUserId()
         .then((globalUserId) => {
             console.log("userId in displayCart:", globalUserId);
-
+            localStorage.setItem('userId', globalUserId);
             $.ajax({
                 type: "GET",
                 url: "http://localhost:8080/api/v1/course/dto/userId?userId=" + globalUserId,
