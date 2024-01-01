@@ -50,7 +50,7 @@ public class CourseController {
     }
 
     @GetMapping("/dtoDetailed/id")
-    public CourseDtoDetailed getAllCourseDtoDetailed(@RequestParam Integer id) {
+    public CourseDtoDetailed getCourseDtoDetailed(@RequestParam Integer id) {
         return courseService.getCourseDtoDetailed(id);
     }
 

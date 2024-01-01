@@ -1,7 +1,8 @@
 package com.ing.Soft.entities;
 
-import jakarta.persistence.*;
 import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "course")
@@ -23,4 +24,19 @@ public class Course {
 
     @Column(name = "students_no")
     private Integer studentsNo;
+
+    public Course(Integer id) {
+        this.id = id;
+    }
+
+    public Course(Integer id, String name, String description, String time, Integer studentsNo) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.time = time;
+        this.studentsNo = studentsNo;
+    }
+
+    public Course() {
+    }
 }

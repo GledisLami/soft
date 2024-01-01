@@ -8,6 +8,8 @@ import com.ing.Soft.repositories.StudentEnrollmentRepository;
 import com.ing.Soft.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class StudentEnrollmentService {
@@ -22,16 +24,22 @@ public class StudentEnrollmentService {
 
     }
 
-    public void enrollStudent(Integer user_id, Integer course_id) {
+    public void enrollStudent(Integer course_id, Integer user_id) {
 
         Course course = courseRepository.findById(course_id).get();
         User user = userRepository.findById(user_id).get();
+        //kontrollojme nese ky student eshte i rregjistruar, qe te mos ruhen entitetet disa here
+        List<StudentEnrollment> pastEnrollment = studentEnrollmentRepository.findListByUserAndCourseId(user_id, course_id);
+        if (!(pastEnrollment.isEmpty())){
+            studentEnrollmentRepository.deleteAll(pastEnrollment);
+        }
         StudentEnrollment studentEnrollment = new StudentEnrollment(course, user);
         studentEnrollmentRepository.save(studentEnrollment);
     }
 
     public void unenrollStudent(Integer course_id, Integer user_id) {
-        StudentEnrollment enrollmentToDelete = studentEnrollmentRepository.findByStudentAndCourseId(user_id, course_id);
+        StudentEnrollment enrollmentToDelete = studentEnrollmentRepository.findByUserAndCouseId(user_id, course_id).get();
+        enrollmentToDelete.getCourse().setStudentsNo(enrollmentToDelete.getCourse().getStudentsNo()-1);
         studentEnrollmentRepository.delete(enrollmentToDelete);
     }
 

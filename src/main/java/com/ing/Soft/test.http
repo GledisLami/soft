@@ -41,3 +41,59 @@ Accept: application/json
 ### Feedback Controller
 GET localhost:8080/api/v1/feedback
 Accept: application/json
+
+###
+GET localhost:8080/api/v1/feedback/id?id=1
+Accept: application/json
+
+###
+POST localhost:8080/api/v1/feedback
+Content-Type: application/json
+
+{
+  "rating": 1,
+  "description": "The professor was very good",
+  "courseId": 10,
+  "userId": 7,
+  "date": "2023-01-01"
+}
+
+###
+DELETE localhost:8080/api/v1/feedback?id=11
+Content-Type: application/json
+
+###
+GET localhost:8080/api/v1/feedback/course?courseId=1
+Content-Type: application/json
+
+###StudentEnrollment
+
+POST localhost:8080/api/v1/enrollment?course_id=10&user_id=7
+Accept: application/json
+
+###
+DELETE localhost:8080/api/v1/enrollment?course_id=10&user_id=7
+Accept: application/json
+
+
+###User Controller
+POST localhost:8080/api/v1/user
+Content-Type: application/json
+
+{
+  "username": "gledislami",
+  "password": "testing",
+  "name": "Gledis",
+  "surname": "Lami",
+  "personalNo": "K12345678M",
+  "birthday": "1998-01-01",
+  "enabled": 1,
+  "role": {
+    "id": 1,
+    "name": "ROLE_STUDENT"
+  }
+}
+
+###
+GET localhost:8080/api/v1/user/id?id=1
+Accept: application/json

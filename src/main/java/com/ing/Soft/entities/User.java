@@ -1,6 +1,6 @@
 package com.ing.Soft.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
@@ -38,4 +38,24 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
+
+    public User(Integer id) {
+        this.id = id;
+    }
+
+
+    public User(Integer id, String username, String password, String name, String surname, String personalNo, Date birthday, Integer enabled, Role role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.personalNo = personalNo;
+        this.birthday = birthday;
+        this.enabled = enabled;
+        this.role = role;
+    }
+
+    public User() {
+    }
 }

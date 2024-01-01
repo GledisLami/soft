@@ -1,8 +1,6 @@
 package com.ing.Soft.dtos;
 
-import com.ing.Soft.entities.Course;
 import com.ing.Soft.entities.Feedback;
-import com.ing.Soft.entities.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +17,8 @@ public class FeedbackDto {
 
     private Integer courseId;
 
+    private String courseName;
+
     private Integer userId;
 
     private Date date;
@@ -27,6 +27,7 @@ public class FeedbackDto {
         this.rating = feedback.getRating();
         this.description = feedback.getDescription();
         this.courseId = feedback.getCourse().getId();
+        this.courseName = feedback.getCourse().getName();
         this.userId = feedback.getUser().getId();
         this.date = feedback.getDate();
     }

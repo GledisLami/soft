@@ -12,6 +12,7 @@ public class CourseDtoMapper {
         /*
         Runs query and maps it from the projected interface to the
         class who has a constructor with that interface as a parameter
+        Course Interface -> Course Dto
          */
 
         return listSupplier.get().

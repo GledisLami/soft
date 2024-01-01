@@ -1,7 +1,5 @@
 package com.ing.Soft.repositories;
 
-import com.ing.Soft.dtos.CourseDto;
-import com.ing.Soft.dtos.CourseDtoDetailed;
 import com.ing.Soft.entities.Course;
 import com.ing.Soft.interfaces.CourseDetailedInterface;
 import com.ing.Soft.interfaces.CourseInterface;
@@ -36,7 +34,7 @@ public interface CourseRepository extends JpaRepository <Course, Integer> {
     CourseInterface findCourseDto(Integer id); //find by course id
 
 
-    @Query(value = "SELECT a.id AS id, a.name AS name, a.description AS description, a.time AS time, a.students_no AS studentsNo, fa.average AS average, u.name AS teacher " +
+    @Query(value = "SELECT a.id as id, a.name as name, u.name as teacher, a.students_no as studentsNo, fa.average as average " +
             "FROM course a " +
             "JOIN feedback_average fa ON fa.course_id = a.id " +
             "JOIN teacher_enrollment te ON te.course_id = a.id " +
@@ -48,7 +46,7 @@ public interface CourseRepository extends JpaRepository <Course, Integer> {
             "FROM course a " +
             "JOIN teacher_enrollment te ON a.id = te.course_id " +
             "JOIN user u ON u.id = te.user_id " +
-            "JOIN feedback_average c ON a.id = c.course_id "+
+            "JOIN feedback_average c ON a.id = c.course_id " +
             "JOIN student_enrollment se ON se.user_id =:user_id AND se.course_id = a.id", nativeQuery = true)
     List<CourseInterface> findCourseDtosByUserId(Integer user_id);
 

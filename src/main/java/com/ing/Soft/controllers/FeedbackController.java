@@ -16,8 +16,13 @@ public class FeedbackController {
     @Autowired
     FeedbackService feedbackService;
     @GetMapping
-    public List<FeedbackDto> findAll(){
+    public List<Feedback> findAll(){
         return feedbackService.findAll();
+    }
+
+    @GetMapping("/dto")
+    public List<FeedbackDto> findAllDtos(){
+        return feedbackService.findAllDtos();
     }
 
     @GetMapping("/id")

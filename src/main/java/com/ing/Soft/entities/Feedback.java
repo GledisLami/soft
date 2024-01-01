@@ -1,11 +1,10 @@
 package com.ing.Soft.entities;
 
 import com.ing.Soft.dtos.FeedbackDto;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
-import java.util.Optional;
 
 @Entity
 @Table(name = "feedback")
@@ -35,11 +34,22 @@ public class Feedback {
     public Feedback(FeedbackDto feedbackDto) {
         this.rating = feedbackDto.getRating();
         this.description = feedbackDto.getDescription();
-        this.course = feedbackDto.getCourse();
-        this.user = feedbackDto.getUser();
+        this.course = new Course(feedbackDto.getCourseId());
+        this.user = new User(feedbackDto.getUserId());
         this.date = feedbackDto.getDate();
+    }
+
+    public static Feedback fromDTO(FeedbackDto feedbackDTO) {
+        Feedback feedback = new Feedback();
+        feedback.setRating(feedbackDTO.getRating());
+        feedback.setDescription(feedbackDTO.getDescription());
+        feedback.setCourse(new Course(feedbackDTO.getCourseId()));
+        feedback.setUser(new User(feedbackDTO.getUserId()));
+        feedback.setDate(feedbackDTO.getDate());
+        return feedback;
     }
 
     public Feedback() {
     }
+
 }

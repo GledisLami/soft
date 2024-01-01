@@ -1,7 +1,6 @@
 package com.ing.Soft.dtos;
 
 import com.ing.Soft.interfaces.CourseDetailedInterface;
-import com.ing.Soft.interfaces.CourseInterface;
 import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
@@ -24,5 +23,6 @@ public class CourseDtoDetailed extends CourseDto {
         this.time = courseDetailedInterface.getTime();
     }
 
-
+    public CourseDtoDetailed() {
+    }
 }

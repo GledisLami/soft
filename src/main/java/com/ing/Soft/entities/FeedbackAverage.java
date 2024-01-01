@@ -1,6 +1,6 @@
 package com.ing.Soft.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 @Entity
 @Table(name = "feedback_average")

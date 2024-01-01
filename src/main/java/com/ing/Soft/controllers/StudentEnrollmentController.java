@@ -15,11 +15,11 @@ public class StudentEnrollmentController {
     @PostMapping
     public void enrollStudent(@RequestParam Integer course_id, @RequestParam Integer user_id) {
         studentEnrollmentService.enrollStudent(course_id, user_id);
-
     }
 
-    @DeleteMapping("/unenroll")
+    @DeleteMapping
     public void unenrollStudents(@RequestParam Integer course_id, @RequestParam Integer user_id) {
+        studentEnrollmentService.unenrollStudent(course_id, user_id);
     }
 
 

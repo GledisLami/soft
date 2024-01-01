@@ -27,11 +27,15 @@ public class FeedbackService {
     }
 
     //duhet kthyer dto pasi Feedback ben join dhe kthen shume te dhena
-    public List<FeedbackDto> findAll(){
+    public List<FeedbackDto> findAllDtos(){
         return feedbackRepository.findAll()
                 .stream()
                 .map(FeedbackDto::new)
-                .toList();
+                .collect(Collectors.toList());
+    }
+
+    public List<Feedback> findAll(){
+        return feedbackRepository.findAll();
     }
 
     public Optional<FeedbackDto> findById(Integer id){
@@ -44,11 +48,12 @@ public class FeedbackService {
                 studentEnrollmentRepository.findByUserAndCouseId(feedbackDto.getUserId(), feedbackDto.getCourseId());
         Optional<Feedback> feedbackSearch = feedbackRepository.
                 findByUserAndCourseId(feedbackDto.getCourseId(),feedbackDto.getUserId());
-        if (enrolledStudent.isEmpty() || feedbackSearch.isPresent()){ //ose njera ose tjetra duhet te mos lejojne
+
+        if (!(enrolledStudent.isPresent()) || feedbackSearch.isPresent()){ //ose njera ose tjetra duhet te mos lejojne
             //dmth qe ky student nuk eshte ne ate kurs
             return "Nuk mund te lesh pershkrim!!!";
         }
-        Feedback feedback = new Feedback(feedbackDto);
+        Feedback feedback = Feedback.fromDTO(feedbackDto);
         feedbackRepository.save(feedback);
         return "U ruajt me sukses";
     }
@@ -71,6 +76,6 @@ public class FeedbackService {
         return feedbackRepository.findByCourseId(courseId)
                 .stream()
                 .map(FeedbackDto::new)
-                .toList();
+                .collect(Collectors.toList());
     }
 }
